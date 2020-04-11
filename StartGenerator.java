@@ -1,34 +1,60 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StartGenerator {
 
     int[][] startState;
-    int[] included;
+    Set<Integer> included;
 
-    public StartGenerator(final int size) {
-        this.startState = new int[size][];
-        System.out.println(Arrays.deepToString(startState));
+    public StartGenerator(int size) {
+        if (checkSize(size))            
+            this.startState = new int[size][size];
+        else 
+            this.startState = new int[1][1];
+        this.included = new HashSet<Integer>();
     }
 
-    public void add(final int number, final int x, final int y){
-        if(number >= 1 || !this.isIncluded(number))
-            System.err.println("Invalid number");
+    public StartGenerator(int sizeX, int sizeY) {
+        if (checkSize(sizeX) || checkSize(sizeY))                
+            this.startState = new int[sizeX][sizeY];
+        else 
+            this.startState = new int[1][1];
+        this.included = new HashSet<Integer>();
+    }
+
+    public void add(int number, int y, int x) throws Exception {
+        
+        if(number < 1)
+            throw new Exception("Number less than one!");
+        else if(this.included.contains(number))
+            throw new Exception("Number already added!");
         else if(x > startState.length -1 || y > startState.length - 1)
-            System.err.println("Invalid number");
-        else
-            this.startState[x][y] = number;
-        System.out.println(Arrays.deepToString(startState));
+            throw new Exception("Invalid X or Y coord!");
+        else {
+            if(this.startState[x][y] == 0){
+                this.startState[x][y] = number;
+                this.included.add(number); 
+            } else
+                throw new Exception("Number already added at this postion");
+        }
     }
 
-    private boolean isIncluded(final int number) {
-        for (final int i : included) {
-            if(i == number);
-            return true;
-        }
-        return false;
+    private boolean checkSize(int size){
+        if(size < 1)
+            return false;
+        return true;
     }
 
     public int[][] genStart(){
+        return this.startState;
+    }
+
+    public void printStartState(){
+        System.out.println(Arrays.deepToString(this.startState).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
+    }
+
+    public int[][] getStartState(){
         return this.startState;
     }
 }
