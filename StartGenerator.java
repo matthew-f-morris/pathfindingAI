@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,14 +46,6 @@ public class StartGenerator {
     }
 
     public int[][] genStart(){
-        return this.startState;
-    }
-
-    public void printStartState(){
-        System.out.println(Arrays.deepToString(this.startState).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
-    }
-
-    public int[][] getStartState(){
         return this.startState;
     }
 }

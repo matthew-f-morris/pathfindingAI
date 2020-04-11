@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        StartGenerator sg = new StartGenerator(5);
+        StartGenerator sg = new StartGenerator(10);
 
         try {
             sg.add(1, 4, 1);
@@ -12,7 +12,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        int[][] startState = sg.getStartState();
+        int[][] startState = sg.genStart();
         ArrayPrinter.print(startState);
     }
 }
