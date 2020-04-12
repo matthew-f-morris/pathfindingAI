@@ -1,12 +1,13 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class StartGenerator {
+public class Generator {
 
     int[][] startState;
     Set<Integer> included;
 
-    public StartGenerator(int size) {
+    public Generator(int size) {
         if (checkSize(size))            
             this.startState = new int[size][size];
         else 
@@ -14,7 +15,7 @@ public class StartGenerator {
         this.included = new HashSet<Integer>();
     }
 
-    public StartGenerator(int sizeX, int sizeY) {
+    public Generator(int sizeX, int sizeY) {
         if (checkSize(sizeX) || checkSize(sizeY))                
             this.startState = new int[sizeX][sizeY];
         else 
@@ -45,7 +46,17 @@ public class StartGenerator {
         return true;
     }
 
-    public int[][] genStart(){
-        return this.startState;
+    public int[][] generate(){
+        
+        int[][] arr = Arrays.stream(this.startState)
+                        .map(int[]::clone)
+                        .toArray(int[][]::new);
+
+        for (int[] i : this.startState) {
+            Arrays.fill(i, 0);
+        }
+
+        this.included.clear();
+        return arr;
     }
 }
