@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class State {
 
-	int[][] state;			//state of state space
+	int[][] internalState;			//state of state space
 	State parentNode;		//node that generated this node
 	Move move;				//operator applied to generate this node
 	int depth = 0;				//no. of nodes from root
@@ -14,7 +14,7 @@ public class State {
 		
 		//constructor for constructing root node (starting board state)
 		
-		this.state = startState;
+		this.internalState = startState;
 		this.parentNode = null;
 		this.move = Move.NONE;		
 	}
@@ -23,7 +23,7 @@ public class State {
 		
 		//constructor for constructing children given a parent node and a move
 		
-		this.state = state;
+		this.internalState = state;
 		this.parentNode = parent;
 		this.depth = parentNode.depth + 1;
 		this.move = move;
@@ -46,6 +46,7 @@ public class State {
 			}			
 			current = current.parentNode;			
 		}		
+
 		Collections.reverse(movesTaken);
 		return movesTaken;		
 	}		

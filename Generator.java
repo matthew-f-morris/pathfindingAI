@@ -23,11 +23,36 @@ public class Generator {
         this.included = new HashSet<Integer>();
     }
 
-    public void add(int number, int y, int x) throws Exception {
+    public void addNumber(int number, int y, int x) throws Exception {
         
         if(number < 1)
             throw new Exception("Number less than one!");
-        else if(this.included.contains(number))
+        else {
+
+            try {
+                this.add(number, y, x);
+            }
+
+            catch (Exception e) {
+                System.err.println("Failed to add Number!");
+            }
+        }
+    }
+
+    public void addAgent(int y, int x) throws Exception {
+        
+        try {
+            this.add(-1, y, x);
+        }
+
+        catch (Exception e) { 
+            System.err.println("Failed to add Agent!");
+        }        
+    }
+
+    private void add(int number, int y, int x) throws Exception {
+        
+        if(this.included.contains(number))
             throw new Exception("Number already added!");
         else if(x > startState.length -1 || y > startState.length - 1)
             throw new Exception("Invalid X or Y coord!");
