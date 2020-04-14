@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class State {
+public class State implements Comparable<State> {
 
 	int[][] internalState;			//state of state space
 	State parentNode;		//node that generated this node
@@ -49,5 +49,25 @@ public class State {
 
 		Collections.reverse(movesTaken);
 		return movesTaken;		
-	}		
+	}
+
+	public ArrayList<Move> getMovesTaken() {
+				
+		ArrayList<Move> movesTaken = new ArrayList<Move>();
+		State current = this;
+
+		while (current != null) {			
+			if (current.move != Move.NONE)				
+				movesTaken.add(current.move);				
+			current = current.parentNode;			
+		}
+
+		Collections.reverse(movesTaken);
+		return movesTaken;	
+	}
+	
+	@Override
+	public int compareTo(State o) {
+		return Integer.compare(this.cost, o.cost);
+	}
 }

@@ -11,33 +11,33 @@ public class Main {
 		
 		Node start = new Node(startState);
 
-		System.out.println("---------------\nStarting DFS...\n----------------\n");
-		DFS.search(start, goalState);
-		System.out.println("Start State:");
-		print(startState);
-		System.out.println("Goal State:");
-		print(goalState);
+		// System.out.println("---------------\nStarting DFS...\n----------------\n");
+		// DFS.search(start, goalState);
+		// System.out.println("Start State:");
+		// print(startState);
+		// System.out.println("Goal State:");
+		// print(goalState);
 	
-		System.out.println("\n\n---------------\nStarting BFS...\n---------------\n");
-		BFS.search(start, goalState);
-		System.out.println("Start State:");
-		print(startState);
-		System.out.println("Goal State:");
-		print(goalState);
+		// System.out.println("\n\n---------------\nStarting BFS...\n---------------\n");
+		// BFS.search(start, goalState);
+		// System.out.println("Start State:");
+		// print(startState);
+		// System.out.println("Goal State:");
+		// print(goalState);
 		
-		System.out.println("\n\n---------------\nStarting IDS...\n---------------\n");
-		IDS.search(start, goalState);
-		System.out.println("Start State:");
-		print(startState);
-		System.out.println("Goal State:");
-		print(goalState);
+		// System.out.println("\n\n---------------\nStarting IDS...\n---------------\n");
+		// IDS.search(start, goalState);
+		// System.out.println("Start State:");
+		// print(startState);
+		// System.out.println("Goal State:");
+		// print(goalState);
 		
 		System.out.println("\n\n---------------\nStarting A*...\n---------------\n");
 		AStar.search(start, goalState);
-		System.out.println("Start State:");
-		print(startState);
-		System.out.println("Goal State:");
-		print(goalState);
+		// System.out.println("Start State:");
+		// print(startState);
+		// System.out.println("Goal State:");
+		// print(goalState);
 			
 	}
 	

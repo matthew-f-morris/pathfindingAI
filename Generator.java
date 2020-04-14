@@ -71,17 +71,18 @@ public class Generator {
         return true;
     }
 
-    public int[][] generate(){
+    public State generate(boolean clear){
         
         int[][] arr = Arrays.stream(this.startState)
                         .map(int[]::clone)
                         .toArray(int[][]::new);
 
-        for (int[] i : this.startState) {
-            Arrays.fill(i, 0);
+        if(clear){
+            for (int[] i : this.startState)
+                Arrays.fill(i, 0);    
+            this.included.clear();
         }
 
-        this.included.clear();
-        return arr;
+        return new State(arr);
     }
 }

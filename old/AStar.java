@@ -25,7 +25,6 @@ public class AStar {
 		while(!queue.isEmpty()){
 			
 			Node expanded = queue.poll();
-			count++;
 			System.out.println(String.format("Nodes Expanded:  " + count + "  Depth:  " + expanded.depth));
 			
 			//check if the goal state is found
@@ -41,14 +40,14 @@ public class AStar {
 				
 			}
 			
+			count++;
+
 			//get the children nodes and add them to the queue
 			
 			legalMoves.getMoves(expanded, expanded.state);
-			for(Node child : legalMoves.getChildren()){	
-				
+			for(Node child : legalMoves.getChildren()){				
 				child.cost = ccalc.calculateCost(child.state, goalState, child);
 				queue.add(child);
-			
 			}						
 		}
 		
