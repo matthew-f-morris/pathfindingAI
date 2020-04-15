@@ -1,14 +1,16 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
-        Generator generator = new Generator(3);
+        Generator generator = new Generator(4);
 
         try {
 
-            generator.addNumber(1, 0, 0);
-            generator.addNumber(2, 1, 0);
-            generator.addNumber(3, 2, 0);
-            generator.addAgent(2, 2);
+            generator.addNumber(1, 0, 3);
+            generator.addNumber(2, 1, 3);
+            generator.addNumber(3, 2, 3);
+            generator.addAgent(3, 3);
 
         } catch (Exception e) {
             System.err.println("Failed to add number!");
@@ -20,9 +22,9 @@ public class Main {
 
         try {
 
-            generator.addNumber(1, 1, 0);
-            generator.addNumber(2, 1, 1);
-            generator.addNumber(3, 1, 2);
+            generator.addNumber(1, 1, 1);
+            generator.addNumber(2, 1, 2);
+            generator.addNumber(3, 1, 3);
 
         } catch (Exception e) {
             System.err.println("Failed to add number!");
@@ -32,14 +34,24 @@ public class Main {
         State goal = generator.generate(true);
         ArrayTools.print(goal.internalState);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        List<Move> mvs = IDS(test, goal);
 
-        // AStar.search(test, goal, 10000);
-        // BFS.search(test, goal, 10000);
+        if(mvs != null){
+            Displayer.display(test, mvs);
+        } else {
+            System.out.println("Failed");
+        }
+    }
+
+    private void AStar(State test, State goal){
+        List<Move> ds = AStar.search(test, goal, 10000);
+    }
+
+    private void BFS(State test, State goal){
+        BFS.search(test, goal, 10000);
+    }
+
+    private static List<Move> IDS(State test, State goal){
         
         boolean found = false;
         int limit = 3;
@@ -50,7 +62,11 @@ public class Main {
             limit++;
         }
 
-        if(!found)
+        if(!found){
             System.out.println("IDS Search Failed");
+            return null;
+        }
+
+        return DFS.finalMoves;
     }
 }

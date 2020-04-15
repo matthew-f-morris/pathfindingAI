@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -6,9 +5,11 @@ import java.util.Stack;
 
 public class DFS {
 	
+	public static List<Move> finalMoves;
+
 	public static boolean search(State startNode, State goalState, int print, int limit) {
 		
-		ArrayList<Move> moves = null;
+		List<Move> moves = null;
 	    Stack<State> stack = new Stack<State>();
         int depth = 0, count = 0;
 		
@@ -43,6 +44,7 @@ public class DFS {
 					System.out.println();		
 				}	
 
+				finalMoves = moves;
 				return true;
 				
 			} else if (expanded.depth != limit) {

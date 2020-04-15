@@ -119,5 +119,18 @@ public class ChildMaker {
 		addU[row - 1 ][col] = -1;
         addU[row][col] = swap;		
         return addU;			
-	}	
+    }
+    
+    public static State[] getStatesFromMoves(State start, List<Move> moves){
+        
+        List<State> states = new ArrayList<State>();
+        states.add(start);
+
+        for(Move move : moves){
+            start = move(start, move);  
+            states.add(start);  
+        }
+
+        return states.toArray(new State[states.size()]);
+    } 
 }
