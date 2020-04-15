@@ -1,20 +1,16 @@
 public class Main {
     public static void main(String[] args) {
 
-        Generator generator = new Generator(4);
+        Generator generator = new Generator(3);
 
         try {
 
-            generator.addNumber(1, 0, 3);
-            generator.addNumber(2, 1, 3);
-            generator.addNumber(3, 2, 3);
-            generator.addNumber(4, 2, 2);
-            // generator.addNumber(5, 3, 2);
-            // generator.addNumber(6, 3, 3);
-            generator.addAgent(0, 0);
+            generator.addNumber(1, 0, 0);
+            generator.addNumber(2, 1, 0);
+            generator.addNumber(3, 2, 0);
+            generator.addAgent(2, 2);
 
         } catch (Exception e) {
-
             System.err.println("Failed to add number!");
             e.printStackTrace();
         }
@@ -24,16 +20,11 @@ public class Main {
 
         try {
 
-            generator.addNumber(1, 1, 1);
-            generator.addNumber(2, 1, 2);
-            generator.addNumber(3, 1, 3);
-            generator.addNumber(4, 3, 3);
-            // generator.addNumber(5, 3, 2);
-            // generator.addNumber(6, 3, 1);
-            generator.addAgent(0, 1);
+            generator.addNumber(1, 1, 0);
+            generator.addNumber(2, 1, 1);
+            generator.addNumber(3, 1, 2);
 
         } catch (Exception e) {
-
             System.err.println("Failed to add number!");
             e.printStackTrace();
         }
@@ -47,6 +38,19 @@ public class Main {
             e.printStackTrace();
         }
 
-        AStar.search(test, goal, 10000);
+        // AStar.search(test, goal, 10000);
+        // BFS.search(test, goal, 10000);
+        
+        boolean found = false;
+        int limit = 3;
+        int maxDepth = 1000;
+
+        while(!found && limit <= maxDepth){           
+            found = DFS.search(test, goal, 0, limit);
+            limit++;
+        }
+
+        if(!found)
+            System.out.println("IDS Search Failed");
     }
 }

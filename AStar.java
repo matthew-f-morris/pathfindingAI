@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class AStar {
 
 	public static void search(State startState, State goalState, int print){
 
 		ArrayList<Move> moves = null;	
-        PriorityQueue<State> queue = new PriorityQueue<State>();        
+        Queue<State> queue = new PriorityQueue<State>();        
         CostCalculator costCalculator = new CostCalculator(goalState.internalState);				
 		int depth = 0, count = 0;
 		
@@ -21,7 +22,8 @@ public class AStar {
             if(print != 0 && count % print == 0)
                 System.out.println(String.format("Nodes Expanded:  " + count + "  Depth:  " + expanded.depth));
 						
-			if(ArrayTools.checkSame(expanded.internalState, goalState.internalState)) {				
+			if(ArrayTools.checkSame(expanded.internalState, goalState.internalState)) {	
+							
 				System.out.println("Goal State Found");
 				moves = State.getMovesTaken(expanded);
 				depth = expanded.depth;
