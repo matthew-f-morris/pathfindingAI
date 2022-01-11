@@ -22,7 +22,7 @@ public class Displayer {
             ArrayTools.print(state.internalState);
 
             try {
-                Thread.sleep(750);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

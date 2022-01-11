@@ -1,14 +1,15 @@
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS {
 
-	public static void search(State startNode, State goalState, int print) {
+	public static ArrayList<Move> search(State startNode, State goalState, int print) {
 		
 		ArrayList<Move> moves = null;	
-        Queue<State> queue = new LinkedList<State>(); // stores nodes to be queued
+        Queue<State> queue = new ArrayDeque<State>(); // stores nodes to be queued
         int depth = 0, count = 0;
 		
         System.out.println("Starting BFS Search...\n");
@@ -51,5 +52,7 @@ public class BFS {
 				System.out.println("\t" + move);				
 			System.out.println();		
 		}	
+
+		return moves;
 	}
 }

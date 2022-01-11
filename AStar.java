@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class AStar {
 
-	public static List<Move> search(State startState, State goalState, int print){
+	public static ArrayList<Move> search(State startState, State goalState, int print){
 
 		ArrayList<Move> moves = null;	
         Queue<State> queue = new PriorityQueue<State>();        
@@ -54,7 +54,7 @@ public class AStar {
 			}						
 		}
 
-		return null;
+		return moves;
 	}	
 }
 

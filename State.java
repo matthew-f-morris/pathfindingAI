@@ -4,16 +4,15 @@ import java.util.Collections;
 
 public class State implements Comparable<State> {
 
-	int[][] internalState;			//state of state space
-	State parentNode;		//node that generated this node
-	Move move;				//operator applied to generate this node
+	int[][] internalState;		//state of state space
+	State parentNode;			//node that generated this node
+	Move move;					//operator applied to generate this node
 	int depth = 0;				//no. of nodes from root
 	int cost = 0;				//cost only used for A* heuristic
 	
 	public State(int[][] startState) {
 		
 		//constructor for constructing root node (starting board state)
-		
 		this.internalState = startState;
 		this.parentNode = null;
 		this.move = Move.NONE;		
@@ -22,7 +21,6 @@ public class State implements Comparable<State> {
 	public State(int[][] state, State parent, Move move) {
 		
 		//constructor for constructing children given a parent node and a move
-		
 		this.internalState = state;
 		this.parentNode = parent;
 		this.depth = parentNode.depth + 1;

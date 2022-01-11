@@ -100,7 +100,6 @@ public class LegalMoves {
 	}			
 	
 	public void moveDown(){
-		
 		//creates the new board state given the specified move, creates the new child with all the relevant information
 		//Separate methods for moving up, down, left, and right
 		
@@ -109,18 +108,15 @@ public class LegalMoves {
 		addD[agentRow+1][agentCol] = -1;
 		addD[agentRow][agentCol] = swap;					
 		newChildNode(addD, parent, Move.DOWN );
-	
 	}
 	
 	public void moveLeft(){
-	
-		
+
 		int[][] addL = copy(state);
 		int swap = state[agentRow][agentCol-1];
 		addL[agentRow][agentCol-1] = -1;
 		addL[agentRow][agentCol] = swap;				
-		newChildNode(addL, parent, Move.LEFT );
-		
+		newChildNode(addL, parent, Move.LEFT );	
 	}
 	
 	public void moveRight(){
@@ -130,7 +126,6 @@ public class LegalMoves {
 		addR[agentRow][agentCol+1] = -1;
 		addR[agentRow][agentCol] = swap;				
 		newChildNode(addR, parent, Move.RIGHT );
-	
 	}
 	
 	public  void moveUp(){
@@ -140,7 +135,6 @@ public class LegalMoves {
 		addU[agentRow-1][agentCol] = -1;
 		addU[agentRow][agentCol] = swap;				
 		newChildNode(addU, parent, Move.UP );		
-	
 	}	
 	
 	public int[][] copy(int[][] array){
@@ -152,7 +146,6 @@ public class LegalMoves {
 		   copy[i] = array[i].clone();
 		
 		return copy;		
-		
 	}	
 	
 	public void getAgent() {
@@ -166,8 +159,7 @@ public class LegalMoves {
 					
 					agentRow = row;
 					agentCol = col;
-					break;
-					
+					break;	
 				}
 			}
 		}
@@ -179,6 +171,5 @@ public class LegalMoves {
 		
 		Node child = new Node(state, parent, move);
 		validMoves.add(child);	
-
 	}
 }

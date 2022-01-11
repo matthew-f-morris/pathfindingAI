@@ -10,6 +10,8 @@ public class DFS {
 	public static boolean search(State startNode, State goalState, int print, int limit) {
 		
 		List<Move> moves = null;
+
+		//replace with arraydequeue change to dequeue
 	    Stack<State> stack = new Stack<State>();
         int depth = 0, count = 0;
 		
